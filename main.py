@@ -41,13 +41,16 @@ class_text = user_data_class.text
 user_data_grid = driver.find_element(By.XPATH, '//*[@id="dt"]/tbody/tr[7]/td[2]')
 grid_text = user_data_grid.text
 show_map = driver.find_element(By.XPATH, '//*[@id="dbmap"]/input')
-print(user_text)
+#new_text = user_text.strip('\n')
+new_text = user_text.splitlines()[0]
+print(new_text)
 print(class_text)
 print(grid_text)
 print("Time =", current_time)
 print("Date =", d)
 show_map.click()
 time.sleep(5)
+'''
 with open('map.png', 'wb') as file:
     m = driver.find_element(By.XPATH, '//*[@id="dbmap"]')
     file.write(m.screenshot_as_png)
@@ -64,4 +67,5 @@ log_file = csv.writer(log_file)
 log_file.writerow(['Log #', 'Time', 'Date', 'Name', 'Call Sign', 'Address', 'Class', 'Grid'])
 log_file.writerow(['1', current_time, d, '4', '5', '6', '7', '8'])
 print('All Records Imported Successfully !')
+'''
 driver.quit()
